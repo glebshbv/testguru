@@ -1,7 +1,14 @@
 class User < ApplicationRecord
-  has_many :tests, foreign_key: 'author_id'
+
+  has_and_belongs_to_many :taken_tests, class_name: 'Test', join_table: :attendance
+
+  enum user_type: {
+    student: 10,
+    author: 20
+  }
 
   def tests_by_level(level)
-    tests.where(level: level)
+    taken_tests.where(level: level)
   end
+
 end
