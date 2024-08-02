@@ -1,6 +1,6 @@
 class User < ApplicationRecord
+  has_many :results
 
-  has_and_belongs_to_many :taken_tests, class_name: 'Test', join_table: :attendance
 
   enum user_type: {
     student: 10,
@@ -8,7 +8,10 @@ class User < ApplicationRecord
   }
 
   def tests_by_level(level)
-    taken_tests.where(level: level)
+    Test.joins(:results)
+        .where(results: {user_id: self.id})
+        .where(level: level)
+        .pluck(:title, :level)
   end
 
 end

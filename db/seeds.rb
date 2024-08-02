@@ -1,5 +1,6 @@
 # db/seeds.rb
 #
+Result.delete_all
 Answer.delete_all
 Question.delete_all
 Test.delete_all
@@ -34,11 +35,6 @@ tests = Test.create!([
 ])
 puts "Tests created"
 
-users[0].taken_tests << tests[0] << tests[1] << tests[2] << tests[3] << tests[4]
-users[1].taken_tests << tests[1] << tests[3]
-users[2].taken_tests << tests[0] << tests[2] << tests[4]
-
-puts "Tests Assiciations created"
 
 questions = Question.create!([
   { body: 'What is 2+2?', test_id: tests[0].id },
@@ -49,7 +45,7 @@ questions = Question.create!([
 ])
 puts "Questions created"
 
-Answer.create!([
+answers = Answer.create!([
   { body: '4', correct: true, question_id: questions[0].id },
   { body: '2x', correct: true, question_id: questions[1].id },
   { body: '299,792,458 m/s', correct: true, question_id: questions[2].id },
@@ -58,4 +54,15 @@ Answer.create!([
 ])
 
 puts "Answers created!"
+
+results = Result.create!([
+  {  user_id: users[0].id, test_id: tests[0].id, answer_id: answers[0].id },
+  {  user_id: users[1].id, test_id: tests[1].id, answer_id: answers[1].id },
+  {  user_id: users[2].id, test_id: tests[2].id, answer_id: answers[2].id },
+  {  user_id: users[0].id, test_id: tests[3].id, answer_id: answers[3].id },
+  {  user_id: users[0].id, test_id: tests[4].id, answer_id: answers[4].id },
+
+])
+puts "Results created"
+
 puts "All created!!"

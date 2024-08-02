@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_31_103050) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_02_052418) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,13 +21,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_31_103050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
-  end
-
-  create_table "attendance", id: false, force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "test_id", null: false
-    t.index ["test_id"], name: "index_attendance_on_test_id"
-    t.index ["user_id"], name: "index_attendance_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -42,6 +35,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_31_103050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["test_id"], name: "index_questions_on_test_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.integer "result", default: 0, null: false
+    t.bigint "user_id", null: false
+    t.bigint "test_id", null: false
+    t.bigint "answer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_results_on_answer_id"
+    t.index ["test_id"], name: "index_results_on_test_id"
+    t.index ["user_id"], name: "index_results_on_user_id"
   end
 
   create_table "tests", force: :cascade do |t|
@@ -65,6 +70,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_31_103050) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "questions", "tests"
+  add_foreign_key "results", "answers"
+  add_foreign_key "results", "tests"
+  add_foreign_key "results", "users"
   add_foreign_key "tests", "categories"
   add_foreign_key "tests", "users", column: "author_id"
 end
