@@ -8,15 +8,15 @@ Category.delete_all
 User.delete_all
 
 users = User.create!([
-  { name: 'Gleb', email: 'gleb@example.com', user_type: 10 },
-  { name: 'Dan', email: 'dan@example.com', user_type: 10 },
-  { name: 'Peter', email: 'peter@example.com', user_type: 10 }
+  { name: 'Gleb', email: 'gleb@example.com' },
+  { name: 'Dan', email: 'dan@example.com' },
+  { name: 'Peter', email: 'peter@example.com' }
 ])
 puts "Users created"
 
 author_users = User.create!([
-  { name: 'AuthorGleb', email: 'authorgleb@example.com', user_type: 20 },
-  { name: 'AuthorDan', email: 'authordan@example.com', user_type: 20 },
+  { name: 'AuthorGleb', email: 'authorgleb@example.com' },
+  { name: 'AuthorDan', email: 'authordan@example.com' },
 ])
 puts "Authors Created"
 
@@ -56,11 +56,11 @@ answers = Answer.create!([
 puts "Answers created!"
 
 results = Result.create!([
-  {  user_id: users[0].id, test_id: tests[0].id, answer_id: answers[0].id },
-  {  user_id: users[1].id, test_id: tests[1].id, answer_id: answers[1].id },
-  {  user_id: users[2].id, test_id: tests[2].id, answer_id: answers[2].id },
-  {  user_id: users[0].id, test_id: tests[3].id, answer_id: answers[3].id },
-  {  user_id: users[0].id, test_id: tests[4].id, answer_id: answers[4].id },
+  {  user_id: users[0].id, test_id: tests[0].id},
+  {  user_id: users[1].id, test_id: tests[1].id},
+  {  user_id: users[2].id, test_id: tests[2].id},
+  {  user_id: users[0].id, test_id: tests[3].id},
+  {  user_id: users[0].id, test_id: tests[4].id},
 
 ])
 puts "Results created"
