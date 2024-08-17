@@ -1,0 +1,9 @@
+<div class="block">
+  <h1 class="font-bold text-4xl">Questions for test number <%= @test.id %>: </h1>
+  <ol>
+    <% @questions.each do |question| %>
+       <li><%= link_to question.body, question_path(question) %></li>
+    <% end %>
+  </ol>
+  <%= link_to 'Create new Question', new_test_question_path(@test) %>
+</div>
