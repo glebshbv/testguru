@@ -11,9 +11,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+  <body class="min-h-screen flex flex-col">
+      <main class="flex-grow container mx-auto px-4 py-8">
+          <%= yield %>
+      </main>
+
+      <footer class="mt-auto w-full flex justify-center items-center">
+          <%= render 'shared/footer' %>
+      </footer>
   </body>
 </html>

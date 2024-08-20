@@ -1,11 +1,14 @@
-<h1>New Question for Test <%= @test.id %></h1>
+<div class="flex flex-col">
+  <h1><%= questions_header(@question) %></h1>
+  <%= form_with model:[@test, @question], local: true do |form| %>
+    <p>
+      <%= form.label :body %>
+      <%= form.text_field :body, id: "body" %>
+    </p>
+    <p>
+      <%= form.submit  %>
+    </p>
+  <% end %>
 
-<%= form_with(url: test_questions_path(@test), local: true) do |form| %>
-  <p>
-    <%= form.label :body, "Question Text" %>
-    <%= form.text_area :body, id: "body", name: "question[body]" %>
-  </p>
-  <%= form.submit "Create" %>
-<% end %>
-
-<%= link_to 'Back', test_questions_path(@test) %>
+  <%= link_to 'Back', test_questions_path(@test) %>
+</div>

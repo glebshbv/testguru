@@ -7,7 +7,6 @@ class QuestionsController < ApplicationController
   def index
     @questions = @test.questions
   end
-
   def show
   end
 
@@ -25,6 +24,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @test = @question.test
   end
 
   def update

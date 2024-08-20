@@ -1,9 +1,16 @@
 <div class="block">
-  <h1 class="font-bold text-4xl">Questions for test number <%= @test.id %>: </h1>
-  <ol>
-    <% @questions.each do |question| %>
-       <li><%= link_to question.body, question_path(question) %></li>
-    <% end %>
-  </ol>
+  <h1 class="font-bold text-4xl mb-4">Questions for test number <%= @test.id %>: </h1>
+  <table>
+  <tr>
+    <th>Qiestion</th>
+    <th>Actions</th>
+  </tr> 
+  <% @questions.each do |question| %>
+  <tr>
+    <td><%= question.body %></td>
+    <td><%= link_to "See Question", question_path(question) %></td>
+  </tr>
+  <% end %>
+</table>
   <%= link_to 'Create new Question', new_test_question_path(@test) %>
 </div>
