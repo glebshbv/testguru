@@ -1,12 +1,14 @@
-<div class="flex flex-row gap-4 mx-auto px-4 text-center">
-  <p class="mb-2">
-    <%= currrent_year %> | Gleb Shabanov
-  </p>
-  <p class="mb-2">
-    <%= link_to "Test Guru", 'https://github.com/your-username/your-repo', class: 'text-blue-600 hover:underline' %>
-    - Tests Project
-  </p>
-  <p>
-    <%= link_to "Учебный проект в онлайн-школе Thinknetica", 'https://thinknetica.com', class: 'text-blue-600 hover:underline' %>
-  </p>
-</div>
+<footer class="mt-auto w-full flex justify-center items-center">
+  <div class="flex flex-row gap-4 mx-auto px-4 text-center">
+    <p class="mb-2">
+      <%= currrent_year %> | Gleb Shabanov
+    </p>
+    <p class="mb-2">
+      <%= link_to "Test Guru", github_url(:glebshbv, :testguru) , class: 'text-blue-600 hover:underline', rel: 'nofollow noopener' %>
+      - Tests Study Project
+    </p>
+    <p>
+      <%= link_to "Study project in online school Thinknetica", 'https://thinknetica.com', class: 'text-blue-600 hover:underline', rel: 'nofollow noopener' %>
+    </p>
+  </div>
+</footer>

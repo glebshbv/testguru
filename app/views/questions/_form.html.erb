@@ -1,9 +1,12 @@
-<%= form_with model: @question, local: true do |form| %>
-  <p>
-    <%= form.label :body %>
-    <%= form.text_field :body, id: "body" %>
-  </p>
-  <p>
-    <%= form.submit  %>
-  </p>
+<%= form_with model: @question.new_record? ? [@test, @question] : @question, local: true, class: "p-6" do |form| %>
+  <div class="space-y-4">
+    <div class="flex flex-col gap-1 items-start">
+      <%= form.label :body, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :body, id: "body", class: "w-full rounded-xl border-gray-300 shadow-sm" %>
+    </div>
+    
+    <div class="flex items-center justify-start">
+      <%= form.submit class: "p-2 bg-blue-600 text-xs text-white rounded-xl" %>
+    </div>
+  </div>
 <% end %>

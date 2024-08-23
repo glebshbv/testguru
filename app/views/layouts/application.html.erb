@@ -12,12 +12,11 @@
   </head>
 
   <body class="min-h-screen flex flex-col">
-      <main class="flex-grow container mx-auto px-4 py-8">
-          <%= yield %>
-      </main>
+    <main class="flex-grow container mx-auto px-4 py-8">
+      <%= yield %>
+    </main>
 
-      <footer class="mt-auto w-full flex justify-center items-center">
-          <%= render 'shared/footer' %>
-      </footer>
+      <%= render 'shared/footer' %>
+
   </body>
 </html>

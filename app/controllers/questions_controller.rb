@@ -1,14 +1,8 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, only: [:index, :new, :create]
-  before_action :find_question, only: [:show, :edit, :update, :destroy]
+  before_action :find_test, only: [:new, :create]
+  before_action :find_question, only: [:edit, :update, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
-
-  def index
-    @questions = @test.questions
-  end
-  def show
-  end
 
   def new
     @question = @test.questions.new
@@ -17,7 +11,7 @@ class QuestionsController < ApplicationController
   def create
     @question = @test.questions.new(question_params)
     if @question.save
-      redirect_to @question, notice: 'Question was successfully created.'
+      redirect_to tests_path, notice: 'Question was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +23,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to @question, notice: 'Question was successfully updated.'
+      redirect_to tests_path, notice: 'Question was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +31,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to test_questions_path(@question.test), notice: 'Question was destroyed'
+    redirect_to tests_path, notice: 'Question was destroyed'
   end
 
   private
