@@ -1,8 +1,10 @@
 <h1 class="my-4 font-normal text-gray-700">Welcome to Test Guru! There are tests available:</h1>
-<div class="grid grid-cols-4 gap-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
   <% @tests.each do |test| %>
     <div class="flex flex-col items-start justify-start gap-y-3 p-2 border rounded-lg shadow bg-slate-100">
-      <h3 class="font-bold text-lg w-full border-b-2"><%= test.title %></h3>
+      <h3 class="font-bold text-lg w-full border-b-2">
+        <%= link_to test.title, test_path(test), class: "hover:text-blue-600 transition duration-300" %>
+      </h3>
       <div class="flex flex-row gap-1 items-center justify-between w-full">
         <div class="flex flex-col items-center">
           <p class="font-bold">Category</p>
@@ -17,18 +19,32 @@
         <p class="font-semibold">Questions List:</p>
         <% test.questions.each_with_index do |question, index| %>
           <div class="flex flex-row justify-between">
-            <p><%= index + 1 %>:</span> <%= question.body %></p>
+            <p><%= index + 1 %>: <%= question.body %></p>
             <div class="flex gap-2">
+              <%= link_to 'View', question_path(question), class:"underline font-xs text-light" %>
               <%= link_to 'Edit', edit_question_path(question), class:"underline font-xs text-light" %>
-              <%= button_to 'Delete', question_path(question), class:"underline font-xs  text-light text-red-600", method: :delete %>
+              <%= button_to 'Delete', question_path(question), class:"underline font-xs text-light text-red-600", 
+                                      method: :delete, 
+                                      form: { data: { turbo_confirm: 'Are you sure you want to delete this test?' } } %>
             </div>
           </div>
         <% end %>
       </div>  
       <div class="flex flex-col">
         <p class="font-semibold">Actions:</p>
-        <%= link_to 'Create new Question', new_test_question_path(test), class:"underline" %>
+        <%= link_to 'Create new Question', new_test_question_path(test), class: "underline" %>
+        <%= link_to 'Edit Test', edit_test_path(test), class: "underline" %>
+        <%= button_to 'Delete Test', 
+                    test_path(test), 
+                    method: :delete, 
+                    class: "underline font-xs text-light text-red-600", 
+                    form: { data: { turbo_confirm: 'Are you sure you want to delete this test?' } } %>
       </div>
     </div>
   <% end %>
+  <div class="flex flex-col items-center justify-center p-2 border rounded-lg shadow bg-slate-100">
+    <%= link_to new_test_path, class: "px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition duration-300" do %>
+      <span class="font-bold">Create Test</span>
+    <% end %>
+  </div>
 </div>

@@ -1,0 +1,31 @@
+<%= form_with(model: @test, local: true, class: "p-6 bg-white rounded-lg shadow") do |form| %>
+  <% if @test.errors.any? %>
+    <div class="mb-4 p-4 bg-red-100 rounded-lg">
+      <h2 class="text-red-700 font-bold mb-2"><%= pluralize(@test.errors.count, "error") %> prohibited this test from being saved:</h2>
+      <ul class="list-disc list-inside">
+        <% @test.errors.full_messages.each do |message| %>
+          <li class="text-red-700"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <%= form.label :title, class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= form.text_field :title, class: "w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :level, class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= form.number_field :level, in: 0..5, class: "w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :category_id, "Category", class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= form.collection_select :category_id, Category.all, :id, :title, { prompt: "Select a category" }, { class: "w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" } %>
+  </div>
+
+  <div class="flex items-center justify-start">
+    <%= form.submit class: "px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition duration-300" %>
+  </div>
+<% end %>
