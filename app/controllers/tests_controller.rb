@@ -6,10 +6,9 @@ class TestsController < ApplicationController
 
   def create
     @test = Test.new(test_params)
-    @test.author_id = "19"
-
+    @test.author = User.first
     if @test.save
-      redirect_to tests_path, notice: 'Test was successfully created.'
+      redirect_to @test, notice: 'Test was successfully created.'
     else
       render :new
     end
@@ -45,6 +44,6 @@ class TestsController < ApplicationController
   end
 
   def test_params
-    params.require(:test).permit(:title, :level, :category_id, :author_id)
+    params.require(:test).permit(:title, :level, :category_id)
   end
 end
