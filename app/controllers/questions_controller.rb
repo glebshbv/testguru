@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to tests_path, notice: 'Question was successfully updated.'
+      redirect_to @question, notice: 'Question was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
