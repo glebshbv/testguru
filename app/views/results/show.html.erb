@@ -4,6 +4,7 @@
   <div class="flex flex-col gap-1 w-full">
     <p class="font-semibold">Question:</p>
     <p><%= @test_passage.current_question.body %></p>
+    <p class="font-semibold">Question <%= @test_passage.test.questions.index(@test_passage.current_question) + 1 %> of <%= @test_passage.test.questions.count %></p>
   </div>
   <div class="flex flex-col gap-3">
     <p class="font-semibold">Answer:</p>
