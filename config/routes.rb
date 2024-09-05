@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :results, only: %i[ show result update ]
+  resources :results, only: %i[ show update ] do
+    member do
+      get :result
+    end
+  end
 
   get "up" => "rails/health#show", as: :rails_health_check
 

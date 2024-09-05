@@ -13,7 +13,7 @@ class ResultsController < ApplicationController
   def update
     @test_passage.accept!(params[:answer_ids])
     if @test_passage.completed?
-
+      redirect_to result_result_path(@test_passage)
     else
       redirect_to result_path(@test_passage)
     end
