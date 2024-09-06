@@ -14,10 +14,22 @@ class Result < ApplicationRecord
       self.correct_questions += 1
     end
     save!
+  end
 
+  def success?
+    return true if calculate_percentage >= 0.85
+    return false
+  end
+
+  def result_percentage
+    calculate_percentage * 100
   end
 
   private
+
+  def calculate_percentage
+    correct_questions.to_f / total_questions_count.to_f
+  end
 
   def set_current_question
     self.current_question = next_question
@@ -49,6 +61,10 @@ class Result < ApplicationRecord
 
   def correct_answers
     current_question.answers.correct
+  end
+
+  def total_questions_count
+    test.questions.count
   end
 
 end
