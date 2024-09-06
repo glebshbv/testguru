@@ -3,9 +3,7 @@ class Result < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
-  before_validation :before_validation_set_first_question, on: :create
-
-  before_update :set_current_next_question
+  before_validation :set_current_question
 
   def completed?
     current_question.nil?
@@ -21,27 +19,36 @@ class Result < ApplicationRecord
 
   private
 
-  def set_current_next_question
+  def set_current_question
     self.current_question = next_question
   end
 
-  def before_validation_set_first_question
-    self.current_question = test.questions.first if test.present?
+  def next_question
+    if new_test?
+      set_first_question
+    else
+      set_next_question
+    end
+  end
+
+  def new_test?
+    self.current_question.nil?
+  end
+
+  def set_first_question
+    test.questions.first
+  end
+
+  def set_next_question
+    test.questions.order(:id).where('id > ?', current_question.id).first
   end
 
   def correct_answer?(answer_ids)
-    correct_answers_count = correct_answers.count
-
-    (correct_answers_count == correct_answers.where(id: answer_ids).count) &&
-    correct_answers_count == answer_ids.count
+     correct_answers.ids.sort == answer_ids.map(&:to_i).sort
   end
 
   def correct_answers
     current_question.answers.correct
-  end
-
-  def next_question
-    test.questions.order(:id).where('id > ?', current_question.id).first
   end
 
 end
