@@ -21,9 +21,10 @@
   </div>  
   <div class="flex flex-col">
     <p class="font-semibold">Actions:</p>
-    <%= link_to 'Create new Question', new_test_question_path(@test), class:"underline" %>
-    <%= link_to 'Edit Test', edit_test_path(@test), class:"underline" %>
-    <%= button_to 'Delete Test', test_path(@test), method: :delete, class:"underline text-red-600", form: { data: { turbo_confirm: 'Are you sure you want to delete this test?' } } %>
-    <%= link_to 'Back to Tests', tests_path, class:"underline" %>
+    <%= link_to 'Create new Question', new_test_question_path(@test), class: "underline" %>
+    <%= link_to 'Edit Test', edit_test_path(@test), class: "underline" %>
+    <%= button_to 'Delete Test', test_path(@test), method: :delete, class:"p-2 my-1 rounded-xl bg-red-800 text-white", form: { data: { turbo_confirm: 'Are you sure you want to delete this test?' } } %>
+    <%= link_to 'Back to Tests', tests_path, class: "underline" %>
   </div>
+
 </div>

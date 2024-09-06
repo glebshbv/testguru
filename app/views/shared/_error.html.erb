@@ -1,4 +1,4 @@
-<% if @test.errors.any? %>
+<% if @test&.errors&.any? %>
   <div class="mb-4 p-4 bg-red-100 rounded-lg">
     <h2 class="text-red-700 font-bold mb-2"><%= pluralize(@test.errors.count, "error") %> prohibited this test from being saved:</h2>
     <ul class="list-disc list-inside">
