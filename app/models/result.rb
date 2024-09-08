@@ -10,15 +10,14 @@ class Result < ApplicationRecord
   end
 
   def accept!(answer_ids)
-    if correct_answer?(answer_ids)
+    if answer_ids.present? && correct_answer?(answer_ids)
       self.correct_questions += 1
     end
     save!
   end
 
   def success?
-    return true if calculate_percentage >= 0.85
-    return false
+    calculate_percentage >= 0.85
   end
 
   def result_percentage
@@ -28,7 +27,7 @@ class Result < ApplicationRecord
   private
 
   def calculate_percentage
-    correct_questions.to_f / total_questions_count.to_f
+    correct_questions.to_f / total_questions_count
   end
 
   def set_current_question
@@ -56,7 +55,9 @@ class Result < ApplicationRecord
   end
 
   def correct_answer?(answer_ids)
-     correct_answers.ids.sort == answer_ids.map(&:to_i).sort
+    return false if answer_ids.blank?
+
+    correct_answers.ids.sort == answer_ids.map(&:to_i).sort
   end
 
   def correct_answers
