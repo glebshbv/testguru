@@ -22,5 +22,4 @@ class ResultsController < ApplicationController
   def set_test_passage
     @test_passage = Result.find(params[:id])
   end
-
 end
