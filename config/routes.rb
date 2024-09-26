@@ -11,10 +11,6 @@ Rails.application.routes.draw do
   post :login, to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: :logout
 
-
-  resources :sessions, only: :create
-
-
   resources :tests do
     resources :questions, shallow: true, except: %i[ index ] do
       resources :answers, shallow: true, except: %i[ index ]

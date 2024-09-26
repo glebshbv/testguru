@@ -4,7 +4,6 @@ class TestsController < ApplicationController
   before_action :find_test, only: %i[ show edit update destroy start]
 
   def index
-    puts current_user
     @tests = Test.all
   end
 
