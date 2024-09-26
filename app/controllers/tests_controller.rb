@@ -1,5 +1,6 @@
 class TestsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :find_test, only: %i[ show edit update destroy start]
 
   def index
@@ -7,8 +8,7 @@ class TestsController < ApplicationController
   end
 
   def create
-    author = User.first
-    @test = author.authored_tests.new(test_params)
+    @test = current_user.authored_tests.new(test_params)
     if @test.save
       redirect_to @test, notice: 'Test was successfully created.'
     else
