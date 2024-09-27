@@ -13,9 +13,11 @@
 
   <body class="min-h-screen flex flex-col">
     <main class="flex-grow container mx-auto px-4 py-8">
-      <% if logged_in? %>
+      <% if user_signed_in? %>
         <%= render 'layouts/navbar' %>
       <% end %>
+
+      <%= render 'shared/flash' %>
       <%= yield %>
     </main>
       <%= render 'shared/footer' %>
