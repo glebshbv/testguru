@@ -10,11 +10,6 @@ class User < ApplicationRecord
   has_many :authored_tests, class_name: 'Test', foreign_key: :author_id, dependent: :nullify
 
   validates :name, presence: true
-  validates :email, presence: true,
-                    uniqueness: { case_sensitive: false, message: "email exists" },
-                    format: { with: VALID_EMAIL_REGEX, message: "incorrect format" }
-  validates :password, presence: true, confirmation: true
-
 
   def tests_by_level(level)
     tests.where(level: level)
