@@ -43,10 +43,13 @@ class AddDeviseToUsers < ActiveRecord::Migration[7.1]
     add_index :users, :reset_password_token, unique: true
     add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
+    #
+    add_column :users, :type, :string, null: false, default: 'User'
+    add_index :users, :type
   end
 
   def self.down
-    remove_columns(:users, :encrypted_password, :reset_password_token,
+    remove_columns(:users, :encrypted_password, :reset_password_token, :reset_password_sent_at,
                   :remember_created_at, :sign_in_count, :current_sign_in_at,
                   :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip,
                   :confirmation_token,:confirmed_at, :confirmation_sent_at,
@@ -54,5 +57,8 @@ class AddDeviseToUsers < ActiveRecord::Migration[7.1]
     add_column :users, :password_digest, :string
     remove_index(:users, :email)
     change_column_default(:users, :email, nil)
+
+    remove_index(:users, :type)
+    remove_column(:users, :type)
   end
 end
