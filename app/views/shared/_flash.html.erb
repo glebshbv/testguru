@@ -1,0 +1,7 @@
+<% if flash.any? %>
+  <div class="flex rounded-xl bg-red-500 my-4  p-2">
+    <% flash.each do |key, message| %>
+      <%= content_tag :p, message, class: key %>
+    <% end %>
+  </div>
+<% end %>

@@ -22,6 +22,6 @@
     <p class="font-semibold">Actions:</p>
     <%= link_to 'Edit Question', edit_question_path(@question), class:"underline" %>
     <%= button_to 'Delete Question', question_path(@question), method: :delete, class:"underline text-red-600", form: { data: { turbo_confirm: 'Are you sure you want to delete this question?' } } %>
-    <%= link_to 'Back to Test', test_path(@question.test), class:"underline" %>
+    <%= link_to 'Back to Test', admin_test_path(@question.test), class:"underline" %>
   </div>
 </div>
