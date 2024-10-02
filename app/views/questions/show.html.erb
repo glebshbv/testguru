@@ -1,27 +1,27 @@
-<h1 class="my-4 font-normal text-gray-700">Question Details</h1>
+<h1 class="my-4 font-normal text-gray-700"><%= t('.header') %></h1>
 <div class="flex flex-col items-start justify-start gap-y-3 p-2 border rounded-lg shadow bg-slate-100 max-w-xl">
-  <h3 class="font-bold text-lg w-full border-b-2">Question</h3>
+  <h3 class="font-bold text-lg w-full border-b-2"><%= t('.sub_header') %></h3>
   <div class="flex flex-col gap-1 w-full">
-    <p class="font-semibold">Body:</p>
+    <p class="font-semibold"><%= t('.body') %>:</p>
     <p><%= @question.body %></p>
   </div>
   <div class="flex flex-col gap-3">
-    <p class="font-semibold">Answers:</p>
-    <%= link_to 'New Answer', new_question_answer_path(@question), class: "underline" %>
+    <p class="font-semibold"><%= t('.answers') %>:</p>
+    <%= link_to t('.new_answer'), new_question_answer_path(@question), class: "underline" %>
     <ol>
       <%= render @question.answers %>
     </ol>
   </div>
   <div class="flex flex-row gap-1 items-center justify-between w-full">
     <div class="flex flex-col items-center">
-      <p class="font-bold">Test</p>
+      <p class="font-bold"><%= t('.test') %></p>
       <p><%= @question.test.title %></p>
     </div>
   </div>
   <div class="flex flex-col">
     <p class="font-semibold">Actions:</p>
-    <%= link_to 'Edit Question', edit_question_path(@question), class:"underline" %>
-    <%= button_to 'Delete Question', question_path(@question), method: :delete, class:"underline text-red-600", form: { data: { turbo_confirm: 'Are you sure you want to delete this question?' } } %>
-    <%= link_to 'Back to Test', admin_test_path(@question.test), class:"underline" %>
+    <%= link_to t('.edit'), edit_question_path(@question), class:"underline" %>
+    <%= button_to t('.delete'), question_path(@question), method: :delete, class:"underline text-red-600", form: { data: { turbo_confirm: t('.delete_confirmation') } } %>
+    <%= link_to t('.back_to_test'), admin_test_path(@question.test), class:"underline" %>
   </div>
 </div>

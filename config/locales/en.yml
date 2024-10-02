@@ -2,6 +2,7 @@ en:
   activerecord:
     models:
       test: "Test"
+      question: "Question"
     attributes:
       test:
         title: "Name"
@@ -27,6 +28,19 @@ en:
         create_question_link: "Create Question"
         edit_question_link: "Edit Question"
         delete_test_link: "Delete Test"
+      show:
+        header: "Test Details"
+        category: "Category"
+        level: "Level"
+        author: "Author"
+        questions_list: "Questions List:"
+        actions: "Actions"
+        create_test_button: "Create Test"
+        create_question_link: "Create Question"
+        edit_question_link: "Edit Question"
+        delete_test_link: "Delete Test"
+        delete_confirmation: "Are you sure you want to delete this test?"
+        back_to_tests_button: "Back to tests"
       new:
         header: "New Test"
       create:
@@ -41,3 +55,16 @@ en:
       category: "Category"
       level: "Level"
       start_test_button: "Start Test"
+  questions:
+    show:
+      header: "Question Details"
+      sub_header: "Question"
+      body: "Body"
+      answers: "Answers"
+      new_answer: "New Answer"
+      view_answer: "View Answer"
+      edit: "Edit Question"
+      delete: "Delete Question"
+      back_to_test: "Back to Test"
+      delete_confirmation: "Are you sure you want to delete this question?"
+      test: "Test"
