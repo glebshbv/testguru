@@ -1,0 +1,43 @@
+ru:
+  activerecord:
+    models:
+      test: "Тест"
+    attributes:
+      test:
+        title: "Название"
+        level: "Уровень"
+        category_id: "Категория"
+  helpers:
+    submit:
+      create: "Создать %{model}"
+      update: "Обновить %{model}"
+  navbar:
+    welcome: "Добро пожаловать, %{email}"
+    tests: "Тесты"
+    logout: "Выход"
+  admin:
+      tests:
+        index:
+          header: "Привет от Тест Гуру! Вам доступны тесты:"
+          category: "Категория"
+          level: "Уровень"
+          actions: "Действия"
+          start_test_button: "Начать тест"
+          create_test_button: "Создать Тест"
+          create_question_link: "Создать Вопрос"
+          edit_question_link: "Редактировать Вопрос"
+          delete_test_link: "Удалить Тест"
+        new:
+          header: "Новый Тест"
+        create:
+          success: "Тест успешно создан."
+        update:
+          success: "Тест успешно обновлён."
+        destroy:
+          success: "Тест успешно удалён."
+  tests:
+    index:
+      header: "Привет от Тест Гуру! Вам доступны тесты:"
+      category: "Категория"
+      level: "Уровень"
+      start_test_button: "Начать тест"
