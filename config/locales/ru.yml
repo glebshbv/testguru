@@ -12,6 +12,7 @@ ru:
     submit:
       create: "Создать %{model}"
       update: "Обновить %{model}"
+      submit: 'Сохранить %{model}'
   navbar:
     welcome: "Добро пожаловать, %{email}"
     tests: "Тесты"

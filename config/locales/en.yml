@@ -12,6 +12,7 @@ en:
     submit:
       create: "Create %{model}"
       update: "Update %{model}"
+      submit: 'Save %{model}'
   navbar:
     welcome: "Welcome, %{email}"
     tests: "Tests"
