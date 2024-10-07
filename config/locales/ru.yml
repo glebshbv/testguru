@@ -1,0 +1,73 @@
+ru:
+  activerecord:
+    models:
+      test: "Тест"
+      question: "Вопрос"
+    attributes:
+      test:
+        title: "Название"
+        level: "Уровень"
+        category_id: "Категория"
+  helpers:
+    submit:
+      create: "Создать %{model}"
+      update: "Обновить %{model}"
+      submit: 'Сохранить %{model}'
+  navbar:
+    welcome: "Добро пожаловать, %{email}"
+    tests: "Тесты"
+    logout: "Выход"
+  admin:
+      tests:
+        index:
+          header: "Привет от Тест Гуру! Вам доступны тесты:"
+          category: "Категория"
+          level: "Уровень"
+          actions: "Действия"
+          start_test_button: "Начать тест"
+          create_test_button: "Создать Тест"
+          create_question_link: "Создать Вопрос"
+          edit_question_link: "Редактировать Вопрос"
+          delete_test_link: "Удалить Тест"
+        show:
+          header: "Детали теста"
+          category: "Категория"
+          level: "Уровень"
+          author: "Автор"
+          questions_list: "Список вопросов:"
+          actions: "Действия"
+          start_test_button: "Начать тест"
+          create_test_button: "Создать Тест"
+          create_question_link: "Создать Вопрос"
+          edit_question_link: "Редактировать Вопрос"
+          delete_test_link: "Удалить Тест"
+          delete_confirmation: "Вы уверены, что хотите удалить этот тест?"
+          back_to_tests_button: "Назад к тестам"
+        new:
+          header: "Новый Тест"
+        create:
+          success: "Тест успешно создан."
+        update:
+          success: "Тест успешно обновлён."
+        destroy:
+          success: "Тест успешно удалён."
+  tests:
+    index:
+      header: "Привет от Тест Гуру! Вам доступны тесты:"
+      category: "Категория"
+      level: "Уровень"
+      start_test_button: "Начать тест"
+  questions:
+    show:
+      header: "Детали вопроса"
+      sub_header: "Вопрос"
+      body: "Текст"
+      answers: "Ответы"
+      new_answer: "Новый ответ"
+      view_answer: "Увидеть ответ"
+      edit: "Редактировать вопрос"
+      delete: "Удалить вопрос"
+      back_to_test: "Назад к тесту"
+      delete_confirmation: "Вы уверены, что хотите удалить этот вопрос?"
+      test: "Тест"
+      

@@ -1,5 +1,8 @@
 <div class="flex flex-row items-center justify-between">
-  <p class="nav user">Welcome, <b><%= current_user.email %></b></p>
-  <%= link_to 'Tests', root_path %>
-  <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+  <%= link_to root_path do %>
+    <p class="text-2xl font-bold">TEST GURU</p>
+  <% end %>
+  <p class="nav user"><%= t('navbar.welcome', email: current_user.email) %></p>
+  <%= link_to t('navbar.tests'), admin_tests_path if current_user.admin? %>
+  <%= button_to t('navbar.logout'), destroy_user_session_path, method: :delete, class: "w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
 </div>
