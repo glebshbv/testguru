@@ -1,30 +1,30 @@
-<h1 class="my-4 font-normal text-gray-700">Test Details</h1>
+<h1 class="my-4 font-normal text-gray-700"><%= t('.header') %></h1>
 <div class="flex flex-col items-start justify-start gap-y-3 p-2 border rounded-lg shadow bg-slate-100 w-full max-w-3xl">
   <h3 class="font-bold text-lg border-b-2 w-full"><%= @test.title %></h3>
   <div class="flex flex-row gap-1 items-start justify-between w-full">
     <div class="flex flex-col items-center">
-      <p class="font-bold">Category</p>
+      <p class="font-bold"><%= t('.category') %></p>
       <p><%= @test.category.title %></p>
     </div>
     <div class="flex flex-col items-center">
-      <p class="font-bold">Level</p>
+      <p class="font-bold"><%= t('.level') %></p>
       <p><%= test_level(@test.level) %></p>
     </div>
     <div class="flex flex-col items-center">
-      <p class="font-bold">Author</p>
+      <p class="font-bold"><%= t('.author') %></p>
       <p><%= @test.author.name %></p>
     </div>
   </div>
   <div class="flex flex-col gap-1 w-full ">
-    <p class="font-semibold">Questions List:</p>
-    <%= render partial 'questions/question', collection: @test.questions %>
+    <p class="font-semibold"><%= t('.questions_list') %></p>
+    <%= render partial: 'questions/question', collection: @test.questions %>
   </div>  
   <div class="flex flex-col">
-    <p class="font-semibold">Actions:</p>
-    <%= link_to 'Create new Question', new_test_question_path(@test), class: "underline" %>
-    <%= link_to 'Edit Test', edit_admin_test_path(@test), class: "underline" %>
-    <%= button_to 'Delete Test', admin_test_path(@test), method: :delete, class:"p-2 my-1 rounded-xl bg-red-800 text-white", form: { data: { turbo_confirm: 'Are you sure you want to delete this test?' } } %>
-    <%= link_to 'Back to Tests', admin_tests_path, class: "underline" %>
+    <p class="font-semibold"><%= t('.header') %>:</p>
+    <%= link_to t('.create_question_link'), new_test_question_path(@test), class: "underline" %>
+    <%= link_to t('.edit_question_link'), edit_admin_test_path(@test), class: "underline" %>
+    <%= button_to t('.delete_test_link'), admin_test_path(@test), method: :delete, class:"p-2 my-1 rounded-xl bg-red-800 text-white", form: { data: { turbo_confirm: t('.delete_confirmation') } } %>
+    <%= link_to t('.back_to_tests_button'), admin_tests_path, class: "underline" %>
   </div>
 
 </div>
