@@ -69,3 +69,7 @@ en:
       back_to_test: "Back to Test"
       delete_confirmation: "Are you sure you want to delete this question?"
       test: "Test"
+  results:
+    gist:
+      success: "Gist was successfully created! You can view it here: %{url}"
+      failure: "An error occurred while saving the gist"
