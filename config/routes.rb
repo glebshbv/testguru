@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :tests
+    resources :gists, only: [:index, :show]
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

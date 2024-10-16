@@ -1,0 +1,23 @@
+<h1>Question Details</h1>
+
+<div class="question-details">
+  <h2>Question:</h2>
+  <p><%= @question.body %></p>
+
+  <h3>Answers:</h3>
+  <ul>
+    <% @question.answers.each do |answer| %>
+      <li>
+        <%= answer.body %>
+        <% if answer.correct? %>
+          <span class="correct-answer">(Correct)</span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <h3>Associated Test:</h3>
+  <p><%= link_to @question.test.title, admin_test_path(@question.test) %></p>
+
+  <%= link_to 'Back to Gists', admin_gists_path, class: 'btn btn-primary' %>
+</div>

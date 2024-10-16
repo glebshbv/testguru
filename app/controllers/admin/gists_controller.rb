@@ -1,9 +1,12 @@
-class GistsController < ApplicationController
+class Admin::GistsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_test_passage, only: %i[ new create ]
 
-  def new;
+  def index
+    @gists = Gist.all
+  end
 
+  def show
+    @gist = Gist.find(params[:id])
   end
 
   def create;
