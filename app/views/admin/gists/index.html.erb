@@ -1,0 +1,30 @@
+<h1>All Gists</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Gist URL</th>
+      <th>User</th>
+      <th>Created At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @gists.each do |gist| %>
+      <tr>
+        <td>
+          <%= link_to truncate(gist.question.body, length: 25), 
+                      question_path(gist.question), 
+                      title: gist.question.body, class: "underline, text-blue-600" %>
+        </td>
+        <td><%= link_to 'Gist', gist.link, class:"underline text-red-600", target: '_blank' %></td>
+        <td><%= gist.user.email %></td>
+        <td><%= gist.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @gists.empty? %>
+  <p>No gists available.</p>
+<% end %>
