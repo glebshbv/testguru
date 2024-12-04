@@ -6,11 +6,4 @@ class Question < ApplicationRecord
 
   validates :body, presence: true
 
-  def create_gist!(user, gist_result)
-    gists.create!(
-      user: user,
-      link: gist_result.html_url
-    )
-  end
-
 end

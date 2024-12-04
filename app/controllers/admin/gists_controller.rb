@@ -9,18 +9,4 @@ class Admin::GistsController < ApplicationController
     @gist = Gist.find(params[:id])
   end
 
-  def create;
-
-  end
-
-  def show;
-
-  end
-
-  private
-
-  def set_test_passage
-    @test_passage = Result.find(params[:id])
-  end
-
 end
