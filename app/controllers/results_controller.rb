@@ -19,7 +19,7 @@ class ResultsController < ApplicationController
 
   def gist
     result = GistQuestionService.new(@test_passage.current_question, current_user).call
-    if result.persisted?
+    if result.success?
       redirect_to @test_passage, notice: t('.success', url: result.link)
     else
       redirect_to @test_passage, alert: t('.failure')
