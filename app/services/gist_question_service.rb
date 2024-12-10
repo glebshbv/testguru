@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GistQuestionService
   Result = Struct.new(:success?, :link)
 
@@ -18,7 +20,11 @@ class GistQuestionService
   private
 
   def default_client
-    Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'])
+    Octokit::Client.new(access_token: token)
+  end
+
+  def token
+    ENV.fetch('GITHUB_TOKEN')
   end
 
   def create_gist(response)
