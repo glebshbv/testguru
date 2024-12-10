@@ -70,7 +70,7 @@ ru:
       back_to_test: "Назад к тесту"
       delete_confirmation: "Вы уверены, что хотите удалить этот вопрос?"
       test: "Тест"
-  results:
-    gist:
+  gists:
+    create:
       success: "Gist успешно создан! Вы можете посмотреть его здесь: %{url}"
       failure: "Во время сохранения gist произошла ошибка"
