@@ -19,10 +19,12 @@ Rails.application.routes.draw do
     member do
       get :result
     end
+    resources :gists, only: :create
   end
 
   namespace :admin do
     resources :tests
+    resources :gists, only: [:index, :show]
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
