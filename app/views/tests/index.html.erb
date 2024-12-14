@@ -1,4 +1,15 @@
-<h1 class="my-4 font-normal text-gray-700"><%= t('tests.index.header') %></h1>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-  <%= render @tests %>
+<div data-controller="sort-tests">
+  <div class="mb-4">
+    <h1 class="my-4 font-normal text-gray-700"><%= t('tests.index.header') %></h1>
+    <button type="button" 
+            data-action="click->sort-tests#sortByTitle" 
+            class="p-2 rounded-xl bg-yellow-600 text-white mb-4">
+      <%= t('tests.index.sort_by_title') %>
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" 
+       data-sort-tests-target="testsContainer">
+    <%= render @tests %>
+  </div>
 </div>

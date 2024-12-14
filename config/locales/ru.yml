@@ -57,6 +57,7 @@ ru:
       category: "Категория"
       level: "Уровень"
       start_test_button: "Начать тест"
+      sort_by_title: "Сортировать по заголовку"
   questions:
     show:
       header: "Детали вопроса"
