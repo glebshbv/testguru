@@ -1,4 +1,6 @@
-<%= form_with(model: [:admin, @test], local: true, class: "p-6 bg-white rounded-lg shadow") do |form| %>
+<%= form_with(model: [:admin, @test], local: true, class: "p-6 bg-white rounded-lg shadow",
+              data: { controller: "test-form" },
+              html: { "data-test-form-target": "form" }) do |form| %>
   <%= render 'shared/error', object: @test %>
 
   <div class="mb-4">
