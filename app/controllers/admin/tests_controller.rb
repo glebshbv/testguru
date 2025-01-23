@@ -8,10 +8,11 @@ class Admin::TestsController < Admin::BaseController
 
   def create
     @test = current_user.authored_tests.new(test_params)
+
     if @test.save
-      redirect_to @test, notice: t('.success')
+      redirect_to admin_test_path(@test), notice: t('.success')
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -27,15 +28,15 @@ class Admin::TestsController < Admin::BaseController
 
   def update
     if @test.update(test_params)
-      redirect_to tests_path, notice: t('admin.tests.create.success')
+      redirect_to admin_test_path(@test), notice: t('.success')
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @test.destroy
-    redirect_to tests_path, notice: t('admin.tests.create.success')
+    redirect_to admin_tests_path, notice: t('.success')
   end
 
   private

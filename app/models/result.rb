@@ -24,6 +24,18 @@ class Result < ApplicationRecord
     calculate_percentage * 100
   end
 
+  def current_question_number
+    test.questions.order(:id).where('id <= ?', current_question.id).count
+  end
+
+  def progress_percent
+    ((current_question_number - 1).to_f / total_questions_count * 100).round
+  end
+
+  def total_questions_count
+    test.questions.count
+  end
+
   private
 
   def calculate_percentage
@@ -62,10 +74,6 @@ class Result < ApplicationRecord
 
   def correct_answers
     current_question.answers.correct
-  end
-
-  def total_questions_count
-    test.questions.count
   end
 
 end

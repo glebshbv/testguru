@@ -6,10 +6,12 @@
     </div>
     <div class="flex flex-col items-center">
       <p class="font-bold"><%= t('tests.index.level') %></p>
-      <p><%= test_level(test.level) %></p>
+      <p data-test-title><%= test.title %></p>
     </div>
   </div>
   <div class="flex flex-col border-t-2 border-gray-800 mt-2 w-full py-2">
-    <%= button_to t('tests.index.start_test_button'), start_test_path(test) , class: "p-2 my-1 rounded-xl bg-yellow-600 border-gray-700"%>
+    <%= button_to t('tests.index.start_test_button'), 
+        start_test_path(test), 
+        class: "p-2 my-1 rounded-xl bg-yellow-600 border-gray-700" %>
   </div>
 </div>
